@@ -10,22 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_200859) do
+ActiveRecord::Schema.define(version: 2021_08_12_205105) do
 
   create_table "events", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "name"
     t.string "date"
     t.string "time"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "creator_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.integer "creator_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "event_id", null: false
     t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -35,7 +32,6 @@ ActiveRecord::Schema.define(version: 2021_08_12_200859) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["event_id"], name: "index_users_on_event_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -46,6 +42,4 @@ ActiveRecord::Schema.define(version: 2021_08_12_200859) do
     t.index ["user_id"], name: "index_users_events_on_user_id"
   end
 
-  add_foreign_key "events", "users"
-  add_foreign_key "users", "events"
 end
