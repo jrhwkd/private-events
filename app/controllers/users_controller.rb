@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @created_events = []
+    Event.find_each do |event|
+      @created_events.push(event) if event.creator_id == @user.id
+    end
   end
 
   # GET /users/new
