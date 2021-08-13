@@ -1,6 +1,6 @@
 <p>
   <strong>Creator:</strong>
-  <% # User.find(@event.creator_id).username %>
+  <%= User.find(Event.find(params["id"]).creator_id).username %>
 </p>
 
 <p>
