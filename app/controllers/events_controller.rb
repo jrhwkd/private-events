@@ -14,7 +14,6 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @user = current_user
     @event = Event.new
   end
 
